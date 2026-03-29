@@ -32,12 +32,15 @@
 
 Module boundaries: **ESLint** `@nx/enforce-module-boundaries` with `scope:*` tags (see ADR-001).
 
-## Publishing to GitHub (first remote and PR)
+**Default branch:** `main` — do work in `feat/<area>-<slug>` (or `fix/` / `chore/`), open a PR to `main`, and merge when CI is green (see [CONTRIBUTING.md](./CONTRIBUTING.md)).
+
+## Publishing to GitHub (bootstrap or PR helper)
 
 1. Install and sign in to [GitHub CLI](https://cli.github.com/): `gh auth login`.
-2. From the repo root: `.\scripts\publish-pr-phase0.ps1` (public repo by default) or `.\scripts\publish-pr-phase0.ps1 -Private`.
+2. **New repo:** from the repo root, `.\scripts\publish-pr-phase0.ps1` (add `-Private` for a private repo). This creates `origin` and pushes `main`.
+3. **Open a PR:** `.\scripts\publish-pr-phase0.ps1 -FeatureBranch feat/your-branch` (optional `-PrTitle "..."`). Uses [`.github/PULL_REQUEST_BODY_PHASE0.md`](./.github/PULL_REQUEST_BODY_PHASE0.md) as the body unless you change the script.
 
-This creates the repository (if `origin` is missing), pushes `main` and branch `feat/phase-0-foundation`, and opens a PR to `main` using [`.github/PULL_REQUEST_BODY_PHASE0.md`](./.github/PULL_REQUEST_BODY_PHASE0.md).
+You can always use `gh pr create --base main --head <branch>` instead.
 
 ## Documentation
 

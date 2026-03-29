@@ -1,0 +1,17 @@
+---
+description: DDD layers — domain, application, infrastructure, web app
+alwaysApply: true
+---
+
+# Layered architecture
+
+Allowed flow: **`apps/web` → `packages/application` → `packages/domain`**; **`packages/infrastructure` → `packages/domain`**; application orchestrates domain + ports.
+
+| Layer | Folder | Rule |
+| --- | --- | --- |
+| Domain | `packages/domain` | Pure: no React, `fetch`, `localStorage`, or browser APIs. Aggregates and services (Build, PassiveSpec, Item, calc…). |
+| Application | `packages/application` | Use cases; depends on **domain** (and contracts); not on UI components. |
+| Infrastructure | `packages/infrastructure` | Port implementations (HTTP loaders, storage, XML, trade via BFF when it exists). |
+| Web app | `apps/web` | Thin SPA: routes, composition, shadcn, Query; **no** PoB business rules inside components. |
+
+Respect `scope:*` tags and `@nx/enforce-module-boundaries` in `eslint.config.mjs`. Do not bypass with relative imports that violate boundaries.

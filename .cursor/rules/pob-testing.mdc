@@ -1,0 +1,12 @@
+---
+description: Vitest (unit/integration) and Playwright E2E
+globs: **/*.spec.ts,**/*.spec.tsx,**/*.test.ts,**/*.test.tsx,apps/web-e2e/**/*.ts
+alwaysApply: false
+---
+
+# Tests
+
+- **Vitest:** use `*.spec.ts` / `*.spec.tsx` or project conventions; minimal mocks in domain; integration tests with in-memory data/fixtures when applicable.
+- **Playwright:** project `apps/web-e2e`; critical flows per the plan (load build, tree, items, stats). Prefer `getByRole` / accessible labels.
+- **TDD order:** failing test or contract before implementation; large refactors → characterization tests first.
+- **Numeric regression (future phases):** golden `mainOutput` Lua vs TS with tolerance — document in an ADR when the pipeline exists.

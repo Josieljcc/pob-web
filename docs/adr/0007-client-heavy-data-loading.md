@@ -1,30 +1,30 @@
-# ADR-007: Carregamento de dados pesados no cliente (stub)
+# ADR-007: Heavy client-side data loading (stub)
 
 ## Status
 
-Proposta (revisão obrigatória na Fase 2 — árvore passiva)
+Proposed (mandatory review in Phase 2 — passive tree)
 
-## Contexto
+## Context
 
-Artefactos como **árvore passiva** e **base de mods** são grandes; carregar tudo de uma vez pode degradar memória e primeira pintura.
+Artifacts such as the **passive tree** and **mod database** are large; loading everything at once can hurt memory and first paint.
 
-## Decisão (Fase 0)
+## Decision (Phase 0)
 
-Documentar estratégia inicial; implementação mínima na Fase 0:
+Document the initial strategy; minimal implementation in Phase 0:
 
-- Preferir **JSON versionado** por liga/versão de árvore (contratos com Zod/JSON Schema em fases posteriores).
-- Explorar **lazy loading** + **cache em memória** via TanStack Query onde fizer sentido.
-- Avaliar **IndexedDB** ou **Web Worker** quando houver medições reais.
+- Prefer **versioned JSON** per league/tree version (Zod / JSON Schema contracts in later phases).
+- Explore **lazy loading** + **in-memory cache** via TanStack Query where appropriate.
+- Consider **IndexedDB** or **Web Workers** when real measurements exist.
 
-## Revisão (Fase 2)
+## Review (Phase 2)
 
-Ao integrar a árvore real, medir: tamanho de payload, tempo até primeira interacção, uso de memória; actualizar este ADR com números e decisão concreta.
+When integrating the real tree, measure payload size, time to first interaction, and memory; update this ADR with numbers and a concrete decision.
 
-## Consequências
+## Consequences
 
-- Até à revisão, evitar optimizações prematuras que complique o pipeline de dados.
+- Until the review, avoid premature optimizations that complicate the data pipeline.
 
-## Recursos para aprender
+## Learning resources
 
 - [MDN: IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 - [TanStack Query: prefetching](https://tanstack.com/query/latest/docs/framework/react/guides/prefetching)

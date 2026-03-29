@@ -12,7 +12,7 @@ export function App() {
           PoB TypeScript Web
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Fase 0 — monorepo Nx, React 19, Rspack, TanStack Query, shadcn/ui.{' '}
+          Phase 0 — Nx monorepo, React 19, Rspack, TanStack Query, shadcn/ui.{' '}
           <span className="font-mono text-xs">{application()}</span>
         </p>
         <Button className="mt-4" type="button">

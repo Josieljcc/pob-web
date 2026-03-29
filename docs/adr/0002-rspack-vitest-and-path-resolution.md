@@ -1,25 +1,25 @@
-# ADR-002: Rspack, Vitest e resolução de caminhos
+# ADR-002: Rspack, Vitest, and path resolution
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-A app web precisa de bundler rápido compatível com o ecossistema webpack, testes rápidos no mesmo stack TypeScript, e alias consistentes (`@/` para componentes shadcn, pacotes `@pob-web/*`).
+The web app needs a fast bundler compatible with the webpack ecosystem, fast tests on the same TypeScript stack, and consistent aliases (`@/` for shadcn, `@pob-web/*` packages).
 
-## Decisão
+## Decision
 
-- **Produção / dev da app:** **Rspack** via `@nx/rspack` (`rspack.config.js`).
-- **Testes da app:** **Vitest** com `@vitejs/plugin-react` (`vite.config.mts`); alias `@` → `apps/web/src`.
-- **Pacotes TS:** `tsc` com `module`/`moduleResolution` **nodenext** e extensões `.js` nos imports relativos onde aplicável (`verbatimModuleSyntax` na base).
+- **App production / dev:** **Rspack** via `@nx/rspack` (`rspack.config.js`).
+- **App tests:** **Vitest** with `@vitejs/plugin-react` (`vite.config.mts`); alias `@` → `apps/web/src`.
+- **TS packages:** `tsc` with **nodenext** `module` / `moduleResolution` and `.js` extensions on relative imports where required (`verbatimModuleSyntax` in the base config).
 
-## Consequências
+## Consequences
 
-- Alterações em alias exigem actualização em **Rspack** e **Vite** (testes).
-- Builds de libs usam `tsconfig.lib.json` separado da app.
+- Alias changes must be updated in **Rspack** and **Vite** (tests).
+- Library builds use a separate `tsconfig.lib.json` from the app.
 
-## Recursos para aprender
+## Learning resources
 
 - [Rspack](https://rspack.dev/)
 - [Vitest](https://vitest.dev/)

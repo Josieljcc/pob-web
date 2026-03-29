@@ -1,50 +1,51 @@
 # PoB TypeScript Web
 
-Monorepo **Nx** com app **React 19** (`apps/web`), pacotes em `packages/*`, testes **Vitest**, E2E **Playwright**, build **Rspack**, UI **shadcn/ui** + **Tailwind**, dados assíncronos com **TanStack Query**.
+**Nx** monorepo with a **React 19** app (`apps/web`), packages under `packages/*`, **Vitest** tests, **Playwright** E2E, **Rspack** builds, **shadcn/ui** + **Tailwind** UI, and async data via **TanStack Query**.
 
-## Requisitos
+## Requirements
 
 - Node.js 20+
 - npm 10+
 
-## Comandos
+## Commands
 
-| Comando                              | Descrição                                          |
-| ------------------------------------ | -------------------------------------------------- |
-| `npm install`                        | Instala dependências e configura Husky (`prepare`) |
-| `npx nx run @pob-web/web:serve`      | Dev server (http://localhost:4200)                 |
-| `npx nx run @pob-web/web:build`      | Build de produção                                  |
-| `npx nx run-many -t test --all`      | Testes unitários / integração (Vitest)             |
-| `npx nx run-many -t lint --all`      | ESLint                                             |
-| `npx nx run-many -t typecheck --all` | TypeScript                                         |
-| `npx nx run @pob-web/web-e2e:e2e`    | E2E (Playwright, usa preview da app)               |
-| `npm run format`                     | Prettier (write)                                   |
-| `npm run format:check`               | Prettier (check)                                   |
+| Command                              | Description                                    |
+| ------------------------------------ | ---------------------------------------------- |
+| `npm install`                        | Install dependencies and run Husky (`prepare`) |
+| `npx nx run @pob-web/web:serve`      | Dev server (http://localhost:4200)             |
+| `npx nx run @pob-web/web:build`      | Production build                               |
+| `npx nx run-many -t test --all`      | Unit / integration tests (Vitest)              |
+| `npx nx run-many -t lint --all`      | ESLint                                         |
+| `npx nx run-many -t typecheck --all` | TypeScript                                     |
+| `npx nx run @pob-web/web-e2e:e2e`    | E2E (Playwright; uses app preview)             |
+| `npm run format`                     | Prettier (write)                               |
+| `npm run format:check`               | Prettier (check)                               |
 
-## Estrutura
+## Layout
 
-- `apps/web` — SPA (camada fina; domínio em `packages/*`)
+- `apps/web` — SPA (thin layer; domain lives in `packages/*`)
 - `apps/web-e2e` — Playwright
-- `packages/domain` — regras puras (sem React/fetch)
-- `packages/application` — casos de uso
-- `packages/infrastructure` — adaptadores (HTTP, storage, etc.)
-- `docs/adr` — decisões arquiteturais (ADRs)
+- `packages/domain` — pure rules (no React / fetch)
+- `packages/application` — use cases
+- `packages/infrastructure` — adapters (HTTP, storage, etc.)
+- `docs/adr` — architecture decision records (ADRs)
 
-Fronteiras de módulo: **ESLint** `@nx/enforce-module-boundaries` com tags `scope:*` (ver ADR-001).
+Module boundaries: **ESLint** `@nx/enforce-module-boundaries` with `scope:*` tags (see ADR-001).
 
-## Publicar no GitHub (primeiro remoto e PR)
+## Publishing to GitHub (first remote and PR)
 
-1. Instala e autentica o [GitHub CLI](https://cli.github.com/): `gh auth login`.
-2. Na raiz do repositório: `.\scripts\publish-pr-fase0.ps1` (repositório público por omissão) ou `.\scripts\publish-pr-fase0.ps1 -Private`.
+1. Install and sign in to [GitHub CLI](https://cli.github.com/): `gh auth login`.
+2. From the repo root: `.\scripts\publish-pr-phase0.ps1` (public repo by default) or `.\scripts\publish-pr-phase0.ps1 -Private`.
 
-Isto cria o repositório (se não existir `origin`), envia `main` e a branch `feat/fase-0-fundacao`, e abre o PR para `main` com o corpo em [`.github/PULL_REQUEST_BODY_FASE0.md`](./.github/PULL_REQUEST_BODY_FASE0.md).
+This creates the repository (if `origin` is missing), pushes `main` and branch `feat/phase-0-foundation`, and opens a PR to `main` using [`.github/PULL_REQUEST_BODY_PHASE0.md`](./.github/PULL_REQUEST_BODY_PHASE0.md).
 
-## Documentação
+## Documentation
 
 - [CONTRIBUTING.md](./CONTRIBUTING.md) — branches, PRs, hooks
-- [docs/glossary.md](./docs/glossary.md) — glossário de domínio (PoB)
-- Plano detalhado: [`.cursor/plans/pob_typescript_web_f047ad22.plan.md`](./.cursor/plans/pob_typescript_web_f047ad22.plan.md)
+- [docs/glossary.md](./docs/glossary.md) — PoB domain glossary
+- ADRs: [docs/adr](./docs/adr/)
+- Local Cursor plans (not versioned): `.cursor/plans/` — see also ADRs and glossary in the repo
 
-## Licença
+## License
 
-MIT (alinhado ao `package.json`).
+MIT (see `package.json`).

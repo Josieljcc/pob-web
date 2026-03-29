@@ -1,0 +1,13 @@
+---
+description: TypeScript conventions for packages/*
+globs: packages/**/*.ts
+alwaysApply: false
+---
+
+# `packages/*`
+
+- Expose **public APIs** from `src/index.ts`; add TSDoc on public surfaces when you add contracts.
+- Keep **imports** aligned with repo `moduleResolution` / `verbatimModuleSyntax` (`.js` on relative imports when required by the lib `tsconfig`).
+- **Domain:** only dependencies on other domain libs or neutral utilities; never `apps/web` or `@tanstack/*`.
+- **Application:** import `@pob-web/domain` and port types; orchestrate, do not duplicate rules that belong in domain.
+- **Infrastructure:** implement ports defined by domain/application; no presentation logic.

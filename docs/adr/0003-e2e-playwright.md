@@ -1,32 +1,32 @@
-# ADR-003: Testes E2E com Playwright
+# ADR-003: E2E tests with Playwright
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-São necessários testes de fluxo no browser (carregar app, interacções críticas) integrados com Nx e CI.
+We need browser flow tests (load app, critical interactions) integrated with Nx and CI.
 
-## Decisão
+## Decision
 
-Usar **Playwright** com `@nx/playwright`, projecto `apps/web-e2e`, alvo **`e2e`** para smoke em CI, browser **Chromium** por omissão (Firefox/WebKit comentados para reduzir tempo; reactivar quando fizer sentido). O alvo atomizado `e2e-ci` fica para equipas com **Nx Cloud**.
+Use **Playwright** with `@nx/playwright`, project `apps/web-e2e`, target **`e2e`** for CI smoke, **Chromium** by default (Firefox/WebKit commented out to save time; re-enable when useful). The atomized `e2e-ci` target is for teams using **Nx Cloud**.
 
-## Alternativas consideradas e rejeitadas
+## Alternatives considered and rejected
 
-| Ferramenta      | Motivo da rejeição neste repo                                                                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cypress**     | Execução no browser e DX visual fortes, mas integração Nx menos directa e paralelismo/CI alinhados ao nosso stack (Nx + Vitest + TS) favorecem Playwright. |
-| **WebdriverIO** | Flexível via WebDriver, porém mais configuração e tipicamente mais lento para o mesmo nível de smoke.                                                      |
+| Tool            | Reason to reject in this repo                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Cypress**     | Strong in-browser DX, but Nx integration is less direct and our stack (Nx + Vitest + TS) favours Playwright for CI parallelism. |
+| **WebdriverIO** | Flexible via WebDriver, but more setup and typically slower for the same smoke level.                                           |
 
-Ferramentas como TestCafe ou Puppeteer puro não são necessárias enquanto Playwright cobrir CDP + multi-browser + Nx.
+Tools like TestCafe or raw Puppeteer are unnecessary while Playwright covers CDP, multi-browser, and Nx.
 
-## Consequências
+## Consequences
 
-- CI instala `chromium` com `playwright install --with-deps chromium`.
-- Testes dependem do **preview** da app (`nx run @pob-web/web:preview`).
+- CI installs Chromium with `playwright install --with-deps chromium`.
+- Tests depend on app **preview** (`nx run @pob-web/web:preview`).
 
-## Recursos para aprender
+## Learning resources
 
 - [Playwright](https://playwright.dev/)
 - [Nx: Playwright](https://nx.dev/nx-api/playwright/documents/overview)

@@ -2,32 +2,32 @@
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-A app precisa de pedidos HTTP, cache, estados de loading/erro e revalidação sem misturar isso com o motor de cálculo do domínio.
+The app needs HTTP requests, cache, loading/error states, and revalidation without mixing that into the domain calculation engine.
 
-## Decisão
+## Decision
 
-Usar **@tanstack/react-query** com `QueryClient` e `QueryClientProvider` na raiz (`apps/web/src/main.tsx`).
+Use **@tanstack/react-query** with `QueryClient` and `QueryClientProvider` at the root (`apps/web/src/main.tsx`).
 
-- **Query** trata **estado de servidor / async** (fetch, cache, `queryKey` estáveis por recurso).
-- **Domínio** (`packages/domain`) e **casos de uso** (`packages/application`) permanecem **puros** e testáveis com Vitest sem React.
-- O motor PoB (fases futuras) **não** é substituído pelo Query; apenas dados remotos ou carregamento de artefactos.
+- **Query** handles **server / async state** (fetch, cache, stable `queryKey` per resource).
+- **Domain** (`packages/domain`) and **use cases** (`packages/application`) stay **pure** and testable with Vitest without React.
+- The PoB engine (future phases) is **not** replaced by Query; only remote data or artifact loading.
 
-## Alternativas consideradas
+## Alternatives considered
 
-| Opção         | Nota                                                                                        |
-| ------------- | ------------------------------------------------------------------------------------------- |
-| **SWR**       | API semelhante; menos integração com tooling de mutations em alguns cenários.               |
-| **RTK Query** | Excelente no ecossistema Redux; adicionaria camada global desnecessária para este projecto. |
+| Option        | Note                                                                    |
+| ------------- | ----------------------------------------------------------------------- |
+| **SWR**       | Similar API; less mutation tooling integration in some flows.           |
+| **RTK Query** | Great in Redux; would add an unnecessary global layer for this project. |
 
-## Consequências
+## Consequences
 
-- Novos endpoints: definir `queryKey` em função ou constante partilhada; documentar convenções quando existirem múltiplos recursos.
+- New endpoints: define `queryKey` in a function or shared constant; document conventions when multiple resources exist.
 
-## Recursos para aprender
+## Learning resources
 
 - [TanStack Query](https://tanstack.com/query/latest)
-- [Overview (conceitos)](https://tanstack.com/query/latest/docs/framework/react/overview)
+- [Overview (concepts)](https://tanstack.com/query/latest/docs/framework/react/overview)

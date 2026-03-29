@@ -1,27 +1,27 @@
-# ADR-005: shadcn/ui, Tailwind e React 19
+# ADR-005: shadcn/ui, Tailwind, and React 19
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-A camada de UI deve ser acessível, consistente e tipada; o domínio e o motor de cálculo não devem viver em componentes.
+The UI layer should be accessible, consistent, and typed; domain and calculation engine logic must not live in components.
 
-## Decisão
+## Decision
 
-- **React 19** como runtime da app.
-- **Tailwind CSS** + **tailwindcss-animate**; tokens via variáveis CSS em `styles.css` (tema new-york / neutral).
-- **shadcn/ui** (Radix + `class-variance-authority` + `tailwind-merge`): `components.json` em `apps/web`, componentes em `apps/web/src/components/ui`, util `cn` em `src/lib/utils.ts`, alias **`@/*`** → `src/*` (Rspack + Vite).
+- **React 19** as the app runtime.
+- **Tailwind CSS** + **tailwindcss-animate**; tokens via CSS variables in `styles.css` (new-york / neutral theme).
+- **shadcn/ui** (Radix + `class-variance-authority` + `tailwind-merge`): `components.json` in `apps/web`, components under `apps/web/src/components/ui`, `cn` helper in `src/lib/utils.ts`, alias **`@/*`** → `src/*` (Rspack + Vite).
 
-A UI é **só apresentação**: consome DTOs / hooks da camada de aplicação ou TanStack Query; não contém regras de negócio do PoB.
+UI is **presentation only**: consumes DTOs / hooks from the application layer or TanStack Query; no PoB business rules.
 
-## Consequências
+## Consequences
 
-- Novos componentes seguem padrão shadcn (variantes com `cva`).
-- Tema claro/escuro preparado via classe `.dark` (activação futura).
+- New components follow the shadcn pattern (variants with `cva`).
+- Light/dark theme prepared via `.dark` class (activation later).
 
-## Recursos para aprender
+## Learning resources
 
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com/)

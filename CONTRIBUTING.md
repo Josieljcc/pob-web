@@ -1,33 +1,33 @@
-# Contribuir
+# Contributing
 
-## Fluxo Git
+## Git workflow
 
-- Branch de integração: **`main`**.
-- Trabalho novo: branch `feat/<area>-<slug>`, `fix/<slug>` ou `chore/<slug>` a partir de `main`.
-- Integração via **Pull Request** para `main` (mesmo em modo solo: histórico e checklist).
-- Evita push directo de trabalho em curso para `main`; usa PR como registo.
+- Integration branch: **`main`**.
+- New work: branch `feat/<area>-<slug>`, `fix/<slug>`, or `chore/<slug>` from `main`.
+- Integrate via **Pull Request** to `main` (even when solo: history and checklist).
+- Avoid pushing in-progress work straight to `main`; use PRs as the record.
 
 ## Pull requests
 
-Usa o [template](./.github/pull_request_template.md). Inclui sempre: contexto, o que mudou, como validar (comandos `nx`), testes, riscos/follow-ups.
+Use the [template](./.github/pull_request_template.md). Always include: context, what changed, how to validate (`nx` commands), tests, risks / follow-ups.
 
-## Qualidade local
+## Local quality gates
 
-| Momento      | Ferramenta                                                 |
-| ------------ | ---------------------------------------------------------- |
-| `git commit` | **lint-staged**: ESLint + Prettier nos ficheiros staged    |
-| `git push`   | `nx affected -t lint test typecheck` entre `main` e `HEAD` |
+| When         | Tool                                                           |
+| ------------ | -------------------------------------------------------------- |
+| `git commit` | **lint-staged**: ESLint + Prettier on staged files             |
+| `git push`   | `nx affected -t lint test typecheck` between `main` and `HEAD` |
 
-### Saltar hooks (emergência)
+### Skipping hooks (emergency)
 
 ```bash
 set HUSKY=0
 git push
 ```
 
-Ou `git push --no-verify`. Usa só quando necessário; o **CI** continua a ser a fonte de verdade.
+Or `git push --no-verify`. Use only when necessary; **CI** remains the source of truth.
 
-## Comandos úteis antes de abrir PR
+## Useful commands before opening a PR
 
 ```bash
 npm run format:check
@@ -35,6 +35,6 @@ npx nx run-many -t lint test typecheck --all
 npx nx run @pob-web/web-e2e:e2e
 ```
 
-## Revisão
+## Review
 
-Com uma só pessoa no repositório: **auto-revisão** com o checklist do PR e CI verde. Com mais contribuidores: aprovação de revisor humano.
+With a single maintainer: **self-review** using the PR checklist and green CI. With more contributors: require a human reviewer’s approval.

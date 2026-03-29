@@ -1,9 +1,9 @@
 # Onboarding
 
-1. **Node 20+** e **npm 10+**.
-2. `git clone` e `cd` para a raiz do repositório.
-3. `npm install` — instala dependências e executa `husky` (`prepare`).
-4. `npx nx run @pob-web/web:serve` — abre a app em `http://localhost:4200`.
-5. Ler [CONTRIBUTING.md](../CONTRIBUTING.md) e os [ADRs](./adr/).
+1. **Node 20+** and **npm 10+**.
+2. `git clone` and `cd` into the repository root.
+3. `npm install` — installs dependencies and runs Husky (`prepare`).
+4. `npx nx run @pob-web/web:serve` — opens the app at `http://localhost:4200`.
+5. Read [CONTRIBUTING.md](../CONTRIBUTING.md) and [ADRs](./adr/).
 
-Se os git hooks não correrem (clone sem `.git` ou ambiente especial), o CI em GitHub Actions continua a validar lint, testes e E2E.
+If git hooks do not run (incomplete clone or special environment), GitHub Actions CI still validates lint, tests, and E2E.

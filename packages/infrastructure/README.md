@@ -1,11 +1,17 @@
-# infrastructure
+# @pob-web/infrastructure
 
-This library was generated with [Nx](https://nx.dev).
+Infrastructure adapters (HTTP, storage, etc.). Generated with [Nx](https://nx.dev).
 
-## Building
+## Build
 
-Run `nx build infrastructure` to build the library.
+```bash
+npx nx run @pob-web/infrastructure:build
+```
 
-## Running unit tests
+## Unit tests
 
-Run `nx test infrastructure` to execute the unit tests via [Vitest](https://vitest.dev/).
+```bash
+npx nx run @pob-web/infrastructure:test
+```
+
+Uses [Vitest](https://vitest.dev/).

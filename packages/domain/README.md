@@ -1,11 +1,17 @@
-# domain
+# @pob-web/domain
 
-This library was generated with [Nx](https://nx.dev).
+Pure domain logic (no React, no I/O). Generated with [Nx](https://nx.dev).
 
-## Building
+## Build
 
-Run `nx build domain` to build the library.
+```bash
+npx nx run @pob-web/domain:build
+```
 
-## Running unit tests
+## Unit tests
 
-Run `nx test domain` to execute the unit tests via [Vitest](https://vitest.dev/).
+```bash
+npx nx run @pob-web/domain:test
+```
+
+Uses [Vitest](https://vitest.dev/).

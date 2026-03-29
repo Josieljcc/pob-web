@@ -1,23 +1,23 @@
-# ADR-001: Monorepo Nx e fronteiras de módulo
+# ADR-001: Nx monorepo and module boundaries
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-O projecto precisa de várias camadas (UI, aplicação, domínio, infra) com builds e testes independentes, cache de tarefas e regras que impeçam dependências inversas (por exemplo, domínio a importar React).
+The project needs multiple layers (UI, application, domain, infra) with independent builds and tests, task caching, and rules that block inverted dependencies (e.g. domain importing React).
 
-## Decisão
+## Decision
 
-Usar **Nx** em modo integrado com `apps/*` e `packages/*`, **tags** `scope:domain`, `scope:application`, `scope:infrastructure`, `scope:web`, `scope:web-e2e`, e a regra **ESLint** `@nx/enforce-module-boundaries` em `eslint.config.mjs` para restringir dependências entre tags.
+Use **Nx** in integrated mode with `apps/*` and `packages/*`, **tags** `scope:domain`, `scope:application`, `scope:infrastructure`, `scope:web`, `scope:web-e2e`, and the **ESLint** rule `@nx/enforce-module-boundaries` in `eslint.config.mjs` to restrict dependencies between tags.
 
-## Consequências
+## Consequences
 
-- Novos pacotes devem declarar tags no `package.json` (`nx.tags`) coerentes com a sua camada.
-- Violações aparecem no `nx lint` e no IDE.
+- New packages must declare `nx.tags` in `package.json` consistent with their layer.
+- Violations surface in `nx lint` and in the IDE.
 
-## Recursos para aprender
+## Learning resources
 
 - [Nx: Module boundary rules](https://nx.dev/features/enforce-module-boundaries)
 - [Nx: Integrated monorepo](https://nx.dev/concepts/integrated-vs-package-based)

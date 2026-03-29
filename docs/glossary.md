@@ -1,17 +1,17 @@
-# Glossário de domínio (PoB / Path of Building)
+# Domain glossary (PoB / Path of Building)
 
-Termos alinhados ao Path of Building Community; definições curtas para o clone em TypeScript.
+Terms aligned with Path of Building Community; short definitions for the TypeScript port.
 
-| Termo                              | Significado                                                                                                    |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **Build**                          | Estado completo de uma personagem: skills, árvore, itens, configurações e resultado de cálculo (`mainOutput`). |
-| **PassiveSpec** / **Passive tree** | Árvore de talentos passivos: nós, caminhos, atributos e notables alocados.                                     |
-| **Passive tree version**           | Versão do JSON da árvore (por liga/atlas); condiciona dados e URL de import.                                   |
-| **Mod** / **ModDB**                | Modificador numérico ou textual aplicado a itens, árvore ou configurações; base de dados de mods em JSON.      |
-| **Item**                           | Peça de equipamento com texto PoE, sockets, implicits e mods rolados.                                          |
-| **SocketGroup**                    | Grupo de sockets ligados na mesma peça (suportes e gemas).                                                     |
-| **Calc** / **mainOutput**          | Resultado agregado do motor de cálculo (offence, defence, reservas, etc.).                                     |
-| **XML de build**                   | Serialização usada pelo PoB para guardar/carregar builds; alvo de paridade de leitura/escrita.                 |
-| **Import / Trade**                 | Importação de personagem de sites e geração de queries para a API de trade (fases posteriores).                |
+| Term                               | Meaning                                                                                          |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **Build**                          | Full character state: skills, tree, items, configuration, and calculation output (`mainOutput`). |
+| **PassiveSpec** / **Passive tree** | Passive skill tree: nodes, paths, attributes, and allocated notables.                            |
+| **Passive tree version**           | Tree JSON version (per league/atlas); drives data and import URLs.                               |
+| **Mod** / **ModDB**                | Numeric or text modifier on items, tree, or config; mod database as JSON.                        |
+| **Item**                           | Equipment piece with PoE text, sockets, implicits, and rolled mods.                              |
+| **SocketGroup**                    | Linked socket group on one piece (supports and gems).                                            |
+| **Calc** / **mainOutput**          | Aggregated calculation engine output (offence, defence, reservations, etc.).                     |
+| **Build XML**                      | Serialization PoB uses to load/save builds; target for read/write parity.                        |
+| **Import / Trade**                 | Character import from sites and trade API query generation (later phases).                       |
 
-Referência de layout e módulos no repositório Lua: `docs/rundown.md` no [Path of Building](https://github.com/PathOfBuildingCommunity/PathOfBuilding).
+Layout and module reference in the Lua repo: `docs/rundown.md` in [Path of Building](https://github.com/PathOfBuildingCommunity/PathOfBuilding).

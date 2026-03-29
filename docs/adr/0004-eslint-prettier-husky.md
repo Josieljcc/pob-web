@@ -1,29 +1,29 @@
-# ADR-004: ESLint, Prettier e Husky
+# ADR-004: ESLint, Prettier, and Husky
 
 ## Status
 
-Aceite
+Accepted
 
-## Contexto
+## Context
 
-Estilo e regras estáticas devem ser consistentes desde o primeiro commit; feedback local antes do CI.
+Style and static rules should be consistent from the first commit; fast local feedback before CI.
 
-## Decisão
+## Decision
 
-- **ESLint 9** com config **flat** (`eslint.config.mjs`), **eslint-config-prettier** no fim da cadeia para não duplicar formatação.
-- **Prettier** com `.prettierrc` e `.prettierignore`; `npm run format` / `format:check`.
-- **Husky:** `.husky/pre-commit` → `lint-staged` (ESLint em `*.{ts,tsx,js,...}`; Prettier em ficheiros listados).
+- **ESLint 9** with **flat** config (`eslint.config.mjs`), **eslint-config-prettier** last in the chain to avoid duplicating formatting.
+- **Prettier** with `.prettierrc` and `.prettierignore`; `npm run format` / `format:check`.
+- **Husky:** `.husky/pre-commit` → `lint-staged` (ESLint on `*.{ts,tsx,js,...}`; Prettier on listed files).
 - **Husky:** `.husky/pre-push` → `nx affected -t lint test typecheck --base=main --head=HEAD`.
 
-### Push lento ou primeiro clone
+### Slow push or fresh clone
 
-Se não existir `main` ou histórico suficiente, o `affected` pode falhar: usar `git branch -M main` após o primeiro commit, ou temporariamente `HUSKY=0` / `git push --no-verify`. O **CI** (`nx run-many`) permanece obrigatório no PR.
+If `main` is missing or history is shallow, `affected` may fail: use `git branch -M main` after the first commit, or temporarily `HUSKY=0` / `git push --no-verify`. **CI** (`nx run-many`) remains required on the PR.
 
-## Consequências
+## Consequences
 
-- Ficheiros gerados (`dist`, `out-tsc`, caches) estão em `ignore` do ESLint/Prettier.
+- Generated output (`dist`, `out-tsc`, caches) is listed in ESLint/Prettier ignores.
 
-## Recursos para aprender
+## Learning resources
 
 - [ESLint flat config](https://eslint.org/docs/latest/use/configure/configuration-files)
 - [Prettier](https://prettier.io/)

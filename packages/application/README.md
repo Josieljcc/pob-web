@@ -1,11 +1,17 @@
-# application
+# @pob-web/application
 
-This library was generated with [Nx](https://nx.dev).
+Application use cases orchestrating domain and ports. Generated with [Nx](https://nx.dev).
 
-## Building
+## Build
 
-Run `nx build application` to build the library.
+```bash
+npx nx run @pob-web/application:build
+```
 
-## Running unit tests
+## Unit tests
 
-Run `nx test application` to execute the unit tests via [Vitest](https://vitest.dev/).
+```bash
+npx nx run @pob-web/application:test
+```
+
+Uses [Vitest](https://vitest.dev/).

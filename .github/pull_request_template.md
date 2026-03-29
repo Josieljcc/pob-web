@@ -1,33 +1,33 @@
-## Contexto / objetivo
+## Context / goal
 
-<!-- Ligação a issue/epic/plano se existir -->
+<!-- Link to issue, epic, or plan if applicable -->
 
-## O que mudou
+## What changed
 
-<!-- Lista por pacote ou módulo; ficheiros-chave se útil -->
+<!-- List by package or module; key files if helpful -->
 
-## Como validar
+## How to validate
 
-<!-- Comandos nx concretos; passos manuais na UI se aplicável -->
+<!-- Concrete `nx` commands; manual UI steps if applicable -->
 
 ```bash
 
 ```
 
-## Testes
+## Tests
 
-<!-- O que foi adicionado ou actualizado; se TDD, ordem red/green quando relevante -->
+<!-- What was added or updated; if TDD, red/green order when relevant -->
 
-## Riscos / follow-ups
+## Risks / follow-ups
 
-<!-- Breaking changes, débito técnico, ADR necessário -->
+<!-- Breaking changes, tech debt, ADR needed -->
 
-## Screenshots / gravações
+## Screenshots / recordings
 
-<!-- Se alteração visual -->
+<!-- If visual change -->
 
 ## Checklist
 
-- [ ] CI verde (lint, test, typecheck, e2e quando aplicável)
-- [ ] Comportamento novo coberto por testes (TDD)
-- [ ] Documentação / ADRs actualizados se a decisão mudou
+- [ ] CI green (lint, test, typecheck, e2e when applicable)
+- [ ] New behavior covered by tests (TDD)
+- [ ] Documentation / ADRs updated if the decision changed

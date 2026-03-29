@@ -1,0 +1,17 @@
+---
+description: All project documentation, tests, and developer-facing text in English
+alwaysApply: true
+---
+
+# Language: English for docs, tests, and code communication
+
+Use **English** for everything contributors and tools read in the repository:
+
+- **Docs:** `README.md`, `CONTRIBUTING.md`, `docs/**`, `.github/**` (templates, workflow comments where prose is meant for humans), ADRs, glossaries, onboarding.
+- **Tests:** `describe` / `it` / `test` names, file-top comments in spec files, Playwright test titles, assertion messages meant as documentation.
+- **Code:** TSDoc/JSDoc on public APIs, non-obvious inline comments, `TODO`/`FIXME` notes, module-level explanations.
+- **PRs and commits:** titles and descriptions in English (aligns with CI and reviewers).
+
+**Exceptions (when they arise):** user-visible UI copy may follow product i18n rules later; until then, prefer English for consistency. PoE game terms proper nouns (e.g. skill names) stay as in the game.
+
+Do not add or extend non-English prose in the areas above unless an ADR explicitly allows localization for a specific artifact.

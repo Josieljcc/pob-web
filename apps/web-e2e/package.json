@@ -1,0 +1,10 @@
+{
+  "name": "@pob-web-tmp/web-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@pob-web-tmp/web"
+    ]
+  }
+}

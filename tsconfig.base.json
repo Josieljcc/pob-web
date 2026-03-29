@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["@pob-web-tmp/source"]
+    "verbatimModuleSyntax": true,
+    "customConditions": ["@pob-web/source"]
   }
 }

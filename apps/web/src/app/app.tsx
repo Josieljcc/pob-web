@@ -1,27 +1,36 @@
-// Uncomment this line to use CSS modules
-// import styles from './app.module.css';
-import NxWelcome from './nx-welcome';
-
 import { Route, Routes, Link } from 'react-router-dom';
+
+import { application } from '@pob-web/application';
+
+import { Button } from '@/components/ui/button';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="@pob-web-tmp/web" />
+    <div className="min-h-screen bg-background p-8">
+      <header className="mb-8">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          PoB TypeScript Web
+        </h1>
+        <p className="mt-2 text-muted-foreground">
+          Fase 0 — monorepo Nx, React 19, Rspack, TanStack Query, shadcn/ui.{' '}
+          <span className="font-mono text-xs">{application()}</span>
+        </p>
+        <Button className="mt-4" type="button">
+          Smoke UI
+        </Button>
+      </header>
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
+      <div role="navigation" className="mb-6">
+        <ul className="flex gap-4">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="text-primary underline" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/page-2">Page 2</Link>
+            <Link className="text-primary underline" to="/page-2">
+              Page 2
+            </Link>
           </li>
         </ul>
       </div>
@@ -30,8 +39,7 @@ export function App() {
           path="/"
           element={
             <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
+              Root route. <Link to="/page-2">Page 2</Link>
             </div>
           }
         />
@@ -39,12 +47,11 @@ export function App() {
           path="/page-2"
           element={
             <div>
-              <Link to="/">Click here to go back to root page.</Link>
+              <Link to="/">Back home</Link>
             </div>
           }
         />
       </Routes>
-      {/* END: routes */}
     </div>
   );
 }

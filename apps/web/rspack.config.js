@@ -3,6 +3,11 @@ const { NxReactRspackPlugin } = require('@nx/rspack/react-plugin');
 const { join } = require('path');
 
 module.exports = {
+  resolve: {
+    alias: {
+      '@': join(__dirname, 'src'),
+    },
+  },
   output: {
     path: join(__dirname, 'dist'),
   },

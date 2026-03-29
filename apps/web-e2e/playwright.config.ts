@@ -20,20 +20,20 @@ export default defineConfig({
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npx nx run @pob-web/web:preview',
     url: 'http://localhost:4200',
     reuseExistingServer: !process.env['CI'],
-    cwd: workspaceRoot,
+    cwd: workspaceRoot
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+      use: { ...devices['Desktop Chrome'] }
+    }
 
     // Uncomment for broader coverage (adds CI time)
     // {
@@ -64,5 +64,5 @@ export default defineConfig({
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     } */
-  ],
+  ]
 });

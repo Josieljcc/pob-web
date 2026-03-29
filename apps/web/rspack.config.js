@@ -5,19 +5,19 @@ const { join } = require('path');
 module.exports = {
   resolve: {
     alias: {
-      '@': join(__dirname, 'src'),
-    },
+      '@': join(__dirname, 'src')
+    }
   },
   output: {
-    path: join(__dirname, 'dist'),
+    path: join(__dirname, 'dist')
   },
   devServer: {
     port: 4200,
     historyApiFallback: {
       index: '/index.html',
       disableDotRule: true,
-      htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
-    },
+      htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+    }
   },
   plugins: [
     new NxAppRspackPlugin({
@@ -28,12 +28,12 @@ module.exports = {
       assets: ['./src/favicon.ico', './src/assets'],
       styles: ['./src/styles.css'],
       outputHashing: process.env['NODE_ENV'] === 'production' ? 'all' : 'none',
-      optimization: process.env['NODE_ENV'] === 'production',
+      optimization: process.env['NODE_ENV'] === 'production'
     }),
     new NxReactRspackPlugin({
       // Uncomment this line if you don't want to use SVGR
       // See: https://react-svgr.com/
       // svgr: false
-    }),
-  ],
+    })
+  ]
 };

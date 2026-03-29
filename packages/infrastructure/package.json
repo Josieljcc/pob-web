@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "@pob-web/domain": "*",
     "tslib": "^2.3.0"
   }
 }

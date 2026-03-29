@@ -27,7 +27,7 @@ export function createDefaultBuild(overrides?: Partial<Build>): Build {
     pantheonMinorGod: 'None',
     mainSocketGroup: 1,
     characterLevelAutoMode: false,
-    ...overrides,
+    ...overrides
   };
 }
 

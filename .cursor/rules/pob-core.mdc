@@ -8,7 +8,7 @@ alwaysApply: true
 - **Goal:** functional TS (web) port of Path of Building; full parity is long-term — **phased delivery** with measurable acceptance (outputs, XML, UI), not a big bang.
 - **Stack:** Nx monorepo, React 19, Rspack, Vitest, Playwright, ESLint 9 flat + Prettier, Husky, TanStack Query, shadcn/ui + Tailwind, `strict` + `verbatimModuleSyntax`.
 - **Integration:** branch **`main`**; work in `feat/...`, `fix/...`, `chore/...`; integrate via **PR** with template and checklist (see `CONTRIBUTING.md`).
-- **TDD:** red → green → refactor; PRs without tests for new behavior do not merge (except `spike/*` with no merge). Pyramid: Vitest (domain + integration), Playwright (critical flows).
+- **TDD:** see **`pob-tdd.mdc`** — red → green → refactor; tests before implementation for new behavior; PRs without tests for new behavior do not merge (except `spike/*` with no merge). Pyramid: Vitest (domain + integration), Playwright (critical flows).
 - **Stack / boundary decisions:** document in **`docs/adr/`** (new ADR when changing tooling, data, or boundaries); glossary in `docs/glossary.md`.
 - **Query vs domain:** TanStack Query orchestrates **fetch/cache/UI**; it does **not** replace the calculation engine — PoB logic lives in `packages/domain` and use cases in `packages/application`.
 - **Game data:** prefer **stable versioned JSON** and schemas (Zod / JSON Schema) with tests; do not hand-port huge `.lua` files.

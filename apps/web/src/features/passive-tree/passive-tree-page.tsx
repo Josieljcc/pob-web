@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
+  DEFAULT_PASSIVE_TREE_VERSION,
   PassiveTreeGraph,
   canAllocate,
   createInitialAllocation,
-  minimalPassiveTreeJson,
-  parsePassiveTreeJson,
   tryAllocate,
   type PassiveAllocation
 } from '@pob-web/domain';
@@ -14,12 +13,22 @@ import {
   readPassiveAllocationFromStorage,
   writePassiveAllocationToStorage
 } from './passive-tree-storage';
+import { usePassiveTreeData } from './use-passive-tree-data';
 
 export function PassiveTreePage() {
+  const {
+    data: treeData,
+    isLoading,
+    isError,
+    error
+  } = usePassiveTreeData(DEFAULT_PASSIVE_TREE_VERSION);
+
   const graph = useMemo(() => {
-    const data = parsePassiveTreeJson(minimalPassiveTreeJson);
-    return PassiveTreeGraph.fromPassiveTreeData(data);
-  }, []);
+    if (!treeData) {
+      return null;
+    }
+    return PassiveTreeGraph.fromPassiveTreeData(treeData);
+  }, [treeData]);
 
   const [allocation, setAllocation] = useState<PassiveAllocation>(() =>
     typeof window === 'undefined'
@@ -33,6 +42,9 @@ export function PassiveTreePage() {
 
   const tryAlloc = useCallback(
     (nodeId: number) => {
+      if (!graph) {
+        return;
+      }
       setAllocation((prev) => {
         const r = tryAllocate(graph, prev, nodeId);
         return r.ok ? r.allocation : prev;
@@ -41,16 +53,44 @@ export function PassiveTreePage() {
     [graph]
   );
 
-  const candidates = [2, 3, 4].filter(
-    (n) => canAllocate(graph, allocation, n) && !allocation.allocated.has(n)
-  );
+  const candidates = graph
+    ? [2, 3, 4].filter(
+        (n) => canAllocate(graph, allocation, n) && !allocation.allocated.has(n)
+      )
+    : [];
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background p-8">
+        <p data-testid="tree-loading">Loading passive tree…</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen bg-background p-8">
+        <p data-testid="tree-error" className="text-destructive">
+          {error instanceof Error ? error.message : String(error)}
+        </p>
+      </div>
+    );
+  }
+
+  if (!graph) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-background p-8">
       <header className="mb-8">
         <h1 className="text-2xl font-semibold">Passive tree (demo)</h1>
         <p className="mt-2 text-muted-foreground">
-          Phase 2 — minimal fixture graph; allocation persists in{' '}
+          Tree JSON from{' '}
+          <span className="font-mono text-xs">
+            /tree-data/{DEFAULT_PASSIVE_TREE_VERSION}/tree.json
+          </span>
+          ; allocation in{' '}
           <span className="font-mono text-xs">localStorage</span>.
         </p>
       </header>

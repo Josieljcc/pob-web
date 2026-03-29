@@ -6,3 +6,4 @@ export * from './lib/passive-tree/official-tree-import.js';
 export * from './lib/passive-tree/pathfind.js';
 export * from './lib/passive-tree/passive-tree-data.js';
 export * from './lib/passive-tree/passive-tree-graph.js';
+export * from './lib/passive-tree/passive-tree-version.js';

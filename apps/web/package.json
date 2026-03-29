@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "@pob-web/application": "*",
-    "@pob-web/domain": "*"
+    "@pob-web/domain": "*",
+    "@pob-web/infrastructure": "*"
   },
   "nx": {
     "tags": [

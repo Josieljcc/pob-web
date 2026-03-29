@@ -26,7 +26,7 @@ Same targets are available via `npx nx ...` if you prefer Nx directly.
 
 ## Layout
 
-- `apps/web` — SPA (thin layer; domain lives in `packages/*`)
+- `apps/web` — SPA (thin layer; domain lives in `packages/*`); static passive tree JSON under `apps/web/public/tree-data/<version>/tree.json` (see ADR-007)
 - `apps/web-e2e` — Playwright
 - `packages/domain` — pure rules (no React / fetch)
 - `packages/application` — use cases

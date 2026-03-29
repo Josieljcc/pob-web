@@ -10,7 +10,9 @@ test.describe('passive tree demo', () => {
   });
 
   test('allocate node and persist after reload', async ({ page }) => {
-    await expect(page.getByTestId('allocated-count')).toHaveText('1');
+    await expect(page.getByTestId('allocated-count')).toHaveText('1', {
+      timeout: 15_000
+    });
     await page.getByRole('button', { name: 'Allocate node 2' }).click();
     await expect(page.getByTestId('allocated-count')).toHaveText('2');
 

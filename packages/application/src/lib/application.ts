@@ -1,5 +1,6 @@
-import { domain } from '@pob-web/domain';
+import { createDefaultBuild } from '@pob-web/domain';
 
 export function application(): string {
-  return `application:${domain()}`;
+  const build = createDefaultBuild();
+  return `application:${build.targetVersion}`;
 }

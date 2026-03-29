@@ -2,6 +2,6 @@ import { application } from './application.js';
 
 describe('application', () => {
   it('should work', () => {
-    expect(application()).toEqual('application:domain');
+    expect(application()).toEqual('application:3_25');
   });
 });

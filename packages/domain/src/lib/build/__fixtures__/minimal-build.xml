@@ -1,0 +1,14 @@
+<PathOfBuilding>
+  <Build
+    targetVersion="3_25"
+    viewMode="IMPORT"
+    level="92"
+    className="Witch"
+    ascendClassName="Elementalist"
+    bandit="None"
+    pantheonMajorGod="None"
+    pantheonMinorGod="None"
+    mainSocketGroup="1"
+    characterLevelAutoMode="false"
+  />
+</PathOfBuilding>

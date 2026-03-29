@@ -1,0 +1,24 @@
+---
+description: Test-Driven Development (TDD) — red, green, refactor for new behavior
+alwaysApply: true
+---
+
+# TDD (mandatory for new behavior)
+
+Follow **Kent Beck–style TDD** when adding or changing behavior:
+
+1. **Red — write a failing test first** that expresses the desired contract (unit in Vitest, integration when crossing React/storage/network, E2E for critical user flows). The test must fail for the **right reason** before implementation exists or while the bug is present.
+2. **Green — implement the smallest change** that makes the test pass. Do not add untested features in the same step.
+3. **Refactor — clean up** with all tests still green.
+
+## Rules
+
+- **No production code for new behavior without a test** that would fail without it. Spikes on `spike/*` branches may skip this only if they are **not merged** (see `CONTRIBUTING.md`).
+- Prefer **pure functions** or small modules that are easy to test before wiring UI (e.g. storage read/write, parsers, domain rules).
+- For **React state + `localStorage`**: assert **first paint** / synchronous hydration where bugs are timing-related; Playwright’s auto-wait can hide “save effect overwrites before load” bugs — complement with **unit/component tests** that don’t wait for effects to “fix” wrong initial state.
+- **Regression:** when fixing a bug, add a test that fails on the old code and passes on the fix.
+
+## References
+
+- Plan: `.cursor/plans/pob_typescript_web_f047ad22.plan.md` (TDD section)
+- `pob-testing.mdc` — Vitest / Playwright conventions

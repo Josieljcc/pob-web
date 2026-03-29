@@ -11,6 +11,10 @@
 
 Use the [template](./.github/pull_request_template.md). Always include: context, what changed, how to validate (`nx` commands), tests, risks / follow-ups.
 
+## TDD
+
+For **new behavior** and **bug fixes**, follow **red → green → refactor**: add a failing test (or contract) first, then implement the minimal fix. Details and rationale are in [`.cursor/rules/pob-tdd.mdc`](./.cursor/rules/pob-tdd.mdc).
+
 ## Local quality gates
 
 | When         | Tool                                                           |

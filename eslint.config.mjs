@@ -9,8 +9,8 @@ export default [
       '**/dist',
       '**/out-tsc',
       '**/vitest.config.*.timestamp*',
-      '**/test-output',
-    ],
+      '**/test-output'
+    ]
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -23,18 +23,15 @@ export default [
           depConstraints: [
             {
               sourceTag: 'scope:domain',
-              onlyDependOnLibsWithTags: ['scope:domain'],
+              onlyDependOnLibsWithTags: ['scope:domain']
             },
             {
               sourceTag: 'scope:application',
-              onlyDependOnLibsWithTags: ['scope:domain', 'scope:application'],
+              onlyDependOnLibsWithTags: ['scope:domain', 'scope:application']
             },
             {
               sourceTag: 'scope:infrastructure',
-              onlyDependOnLibsWithTags: [
-                'scope:domain',
-                'scope:infrastructure',
-              ],
+              onlyDependOnLibsWithTags: ['scope:domain', 'scope:infrastructure']
             },
             {
               sourceTag: 'scope:web',
@@ -42,17 +39,17 @@ export default [
                 'scope:domain',
                 'scope:application',
                 'scope:infrastructure',
-                'scope:web',
-              ],
+                'scope:web'
+              ]
             },
             {
               sourceTag: 'scope:web-e2e',
-              onlyDependOnLibsWithTags: ['scope:web-e2e'],
-            },
-          ],
-        },
-      ],
-    },
+              onlyDependOnLibsWithTags: ['scope:web-e2e']
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     files: [
@@ -63,9 +60,9 @@ export default [
       '**/*.js',
       '**/*.jsx',
       '**/*.cjs',
-      '**/*.mjs',
+      '**/*.mjs'
     ],
     // Override or add rules here
-    rules: {},
-  },
+    rules: {}
+  }
 ];

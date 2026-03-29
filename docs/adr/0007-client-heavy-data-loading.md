@@ -1,8 +1,8 @@
-# ADR-007: Heavy client-side data loading (stub)
+# ADR-007: Heavy client-side data loading
 
 ## Status
 
-Proposed (mandatory review in Phase 2 — passive tree)
+Accepted (Phase 2 review — reduced fixture; full-tree numbers TBD when shipping live data)
 
 ## Context
 
@@ -18,7 +18,11 @@ Document the initial strategy; minimal implementation in Phase 0:
 
 ## Review (Phase 2)
 
-When integrating the real tree, measure payload size, time to first interaction, and memory; update this ADR with numbers and a concrete decision.
+**Reduced fixture** (`packages/domain/src/lib/passive-tree/__fixtures__/minimal-tree.json`): JSON on the order of **~200 bytes**; `JSON.parse` + Zod validation in Vitest is effectively **sub-millisecond** on dev hardware — safe to bundle for tests and the `/passive-tree` demo.
+
+**Official payload** (`https://www.pathofexile.com/passive-skill-tree`): the embedded `passiveSkillTreeData` object is **large (order of a few MB uncompressed)**. Do **not** load it eagerly on first paint for the MVP UI; use **lazy fetch**, **TanStack Query** with a stable `queryKey` (e.g. tree version), and revisit **code-splitting / IndexedDB / workers** when the full renderer ships.
+
+**Action:** when integrating the full in-app tree, record **payload size (network + parsed)**, **time to first interaction**, and **heap after load** on a mid-tier laptop; append rows to this ADR.
 
 ## Consequences
 

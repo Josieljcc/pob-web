@@ -9,17 +9,20 @@
 
 ## Commands
 
-| Command                              | Description                                    |
-| ------------------------------------ | ---------------------------------------------- |
-| `npm install`                        | Install dependencies and run Husky (`prepare`) |
-| `npx nx run @pob-web/web:serve`      | Dev server (http://localhost:4200)             |
-| `npx nx run @pob-web/web:build`      | Production build                               |
-| `npx nx run-many -t test --all`      | Unit / integration tests (Vitest)              |
-| `npx nx run-many -t lint --all`      | ESLint                                         |
-| `npx nx run-many -t typecheck --all` | TypeScript                                     |
-| `npx nx run @pob-web/web-e2e:e2e`    | E2E (Playwright; uses app preview)             |
-| `npm run format`                     | Prettier (write)                               |
-| `npm run format:check`               | Prettier (check)                               |
+| Command                            | Description                                    |
+| ---------------------------------- | ---------------------------------------------- |
+| `npm install`                      | Install dependencies and run Husky (`prepare`) |
+| `npm run dev` (alias: `npm start`) | Dev server (http://localhost:4200)             |
+| `npm run build`                    | Production build                               |
+| `npm run preview`                  | Serve production build (Rspack preview)        |
+| `npm run test`                     | Unit / integration tests (Vitest)              |
+| `npm run lint`                     | ESLint                                         |
+| `npm run typecheck`                | TypeScript                                     |
+| `npm run e2e`                      | E2E (Playwright; uses app preview)             |
+| `npm run format`                   | Prettier (write)                               |
+| `npm run format:check`             | Prettier (check)                               |
+
+Same targets are available via `npx nx ...` if you prefer Nx directly.
 
 ## Layout
 

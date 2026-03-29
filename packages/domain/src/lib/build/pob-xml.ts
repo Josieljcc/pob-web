@@ -18,16 +18,16 @@ const buildAttributesSchema = z.object({
   [ATTRIBUTE_PREFIX + 'mainSocketGroup']: z.string(),
   [ATTRIBUTE_PREFIX + 'characterLevelAutoMode']: z
     .enum(['true', 'false'])
-    .optional(),
+    .optional()
 });
 
 const pathOfBuildingWrapperSchema = z
   .object({
     PathOfBuilding: z
       .object({
-        Build: z.union([buildAttributesSchema, z.array(buildAttributesSchema)]),
+        Build: z.union([buildAttributesSchema, z.array(buildAttributesSchema)])
       })
-      .passthrough(),
+      .passthrough()
   })
   .passthrough();
 
@@ -49,7 +49,7 @@ function emptyToUndefined(s: string | undefined): string | undefined {
 function reqStr(
   attrs: Record<string, unknown>,
   key: string,
-  field: string,
+  field: string
 ): string {
   const v = attrs[key];
   if (typeof v !== 'string') {
@@ -59,7 +59,7 @@ function reqStr(
 }
 
 function buildFromAttributes(
-  attrs: z.infer<typeof buildAttributesSchema>,
+  attrs: z.infer<typeof buildAttributesSchema>
 ): Build {
   const raw = attrs as Record<string, unknown>;
   const auto = raw[ATTRIBUTE_PREFIX + 'characterLevelAutoMode'];
@@ -67,33 +67,33 @@ function buildFromAttributes(
     targetVersion: reqStr(
       raw,
       ATTRIBUTE_PREFIX + 'targetVersion',
-      'targetVersion',
+      'targetVersion'
     ),
     viewMode: emptyToUndefined(attrs[ATTRIBUTE_PREFIX + 'viewMode']),
     level: parseIntStrict(
       reqStr(raw, ATTRIBUTE_PREFIX + 'level', 'level'),
-      'level',
+      'level'
     ),
     className: emptyToUndefined(attrs[ATTRIBUTE_PREFIX + 'className']),
     ascendClassName: emptyToUndefined(
-      attrs[ATTRIBUTE_PREFIX + 'ascendClassName'],
+      attrs[ATTRIBUTE_PREFIX + 'ascendClassName']
     ),
     bandit: reqStr(raw, ATTRIBUTE_PREFIX + 'bandit', 'bandit'),
     pantheonMajorGod: reqStr(
       raw,
       ATTRIBUTE_PREFIX + 'pantheonMajorGod',
-      'pantheonMajorGod',
+      'pantheonMajorGod'
     ),
     pantheonMinorGod: reqStr(
       raw,
       ATTRIBUTE_PREFIX + 'pantheonMinorGod',
-      'pantheonMinorGod',
+      'pantheonMinorGod'
     ),
     mainSocketGroup: parseIntStrict(
       reqStr(raw, ATTRIBUTE_PREFIX + 'mainSocketGroup', 'mainSocketGroup'),
-      'mainSocketGroup',
+      'mainSocketGroup'
     ),
-    characterLevelAutoMode: auto === 'true',
+    characterLevelAutoMode: auto === 'true'
   };
 }
 
@@ -101,14 +101,14 @@ const xmlParser = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: ATTRIBUTE_PREFIX,
   parseAttributeValue: false,
-  trimValues: true,
+  trimValues: true
 });
 
 const xmlBuilder = new XMLBuilder({
   ignoreAttributes: false,
   attributeNamePrefix: ATTRIBUTE_PREFIX,
   format: true,
-  suppressEmptyNode: true,
+  suppressEmptyNode: true
 });
 
 /**
@@ -142,7 +142,7 @@ function buildToAttributes(build: Build): Record<string, string> {
     [ATTRIBUTE_PREFIX + 'mainSocketGroup']: String(build.mainSocketGroup),
     [ATTRIBUTE_PREFIX + 'characterLevelAutoMode']: build.characterLevelAutoMode
       ? 'true'
-      : 'false',
+      : 'false'
   };
 }
 
@@ -153,9 +153,9 @@ export function serializeBuildToPobXml(build: Build): string {
   const obj = {
     PathOfBuilding: {
       Build: {
-        ...buildToAttributes(build),
-      },
-    },
+        ...buildToAttributes(build)
+      }
+    }
   };
   const xml = xmlBuilder.build(obj);
   return typeof xml === 'string' ? xml : String(xml);

@@ -18,7 +18,7 @@ describe('PoB XML (Build subset)', () => {
   it('round-trips minimal fixture file', () => {
     const xml = readFileSync(
       join(__dirname, '__fixtures__/minimal-build.xml'),
-      'utf8',
+      'utf8'
     );
     const build = parseBuildFromPobXml(xml);
     const out = serializeBuildToPobXml(build);
@@ -29,7 +29,7 @@ describe('PoB XML (Build subset)', () => {
   it('parses fixture to expected values', () => {
     const xml = readFileSync(
       join(__dirname, '__fixtures__/minimal-build.xml'),
-      'utf8',
+      'utf8'
     );
     const build = parseBuildFromPobXml(xml);
     expect(build.targetVersion).toBe('3_25');

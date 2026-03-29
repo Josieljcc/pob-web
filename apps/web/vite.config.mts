@@ -6,8 +6,8 @@ export default defineConfig(() => ({
   cacheDir: '../../node_modules/.vite/apps/web',
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-    },
+      '@': resolve(__dirname, 'src')
+    }
   },
   plugins: [react()],
   // Uncomment this if you are using workers.
@@ -23,7 +23,7 @@ export default defineConfig(() => ({
     reporters: ['default'],
     coverage: {
       reportsDirectory: './test-output/vitest/coverage',
-      provider: 'v8' as const,
-    },
-  },
+      provider: 'v8' as const
+    }
+  }
 }));

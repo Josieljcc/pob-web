@@ -8,5 +8,5 @@ alwaysApply: false
 
 - **Vitest:** use `*.spec.ts` / `*.spec.tsx` or project conventions; minimal mocks in domain; integration tests with in-memory data/fixtures when applicable.
 - **Playwright:** project `apps/web-e2e`; critical flows per the plan (load build, tree, items, stats). Prefer `getByRole` / accessible labels.
-- **TDD order:** failing test or contract before implementation; large refactors → characterization tests first.
+- **TDD:** follow `.cursor/rules/pob-tdd.mdc` (red → green → refactor; test before implementation for new behavior).
 - **Numeric regression (future phases):** golden `mainOutput` Lua vs TS with tolerance — document in an ADR when the pipeline exists.

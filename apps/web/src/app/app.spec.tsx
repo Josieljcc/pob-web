@@ -8,7 +8,7 @@ describe('App', () => {
     const { baseElement } = render(
       <BrowserRouter>
         <App />
-      </BrowserRouter>,
+      </BrowserRouter>
     );
     expect(baseElement).toBeTruthy();
   });
@@ -17,7 +17,7 @@ describe('App', () => {
     const { getByRole } = render(
       <BrowserRouter>
         <App />
-      </BrowserRouter>,
+      </BrowserRouter>
     );
     expect(getByRole('heading', { name: /PoB TypeScript Web/i })).toBeTruthy();
   });

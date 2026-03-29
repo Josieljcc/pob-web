@@ -74,6 +74,14 @@
   ],
   "scripts": {
     "prepare": "husky",
+    "dev": "nx run @pob-web/web:serve",
+    "start": "npm run dev",
+    "build": "nx run @pob-web/web:build",
+    "preview": "nx run @pob-web/web:preview",
+    "test": "nx run-many -t test --all",
+    "lint": "nx run-many -t lint --all",
+    "typecheck": "nx run-many -t typecheck --all",
+    "e2e": "nx run @pob-web/web-e2e:e2e",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

@@ -1,10 +1,14 @@
 {
-  "name": "@pob-web-tmp/web-e2e",
+  "name": "@pob-web/web-e2e",
   "version": "0.0.1",
   "private": true,
   "nx": {
+    "tags": [
+      "scope:web-e2e",
+      "type:e2e"
+    ],
     "implicitDependencies": [
-      "@pob-web-tmp/web"
+      "@pob-web/web"
     ]
   }
 }

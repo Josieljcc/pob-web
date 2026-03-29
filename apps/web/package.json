@@ -1,5 +1,14 @@
 {
-  "name": "@pob-web-tmp/web",
+  "name": "@pob-web/web",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@pob-web/application": "*"
+  },
+  "nx": {
+    "tags": [
+      "scope:web",
+      "type:app"
+    ]
+  }
 }

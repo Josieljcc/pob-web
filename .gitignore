@@ -17,6 +17,11 @@ node_modules
 .settings/
 *.sublime-workspace
 
+# Cursor: local state and plans (shared rules under .cursor/rules/ stay tracked)
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

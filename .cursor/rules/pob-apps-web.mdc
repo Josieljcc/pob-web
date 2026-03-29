@@ -1,0 +1,12 @@
+---
+description: Web app — React 19, shadcn, Tailwind, TanStack Query
+globs: apps/web/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# `apps/web`
+
+- **UI:** **shadcn/ui** under `src/components/ui`, `cn` helper in `src/lib/utils`, alias `@/*` → `src/*` (Rspack + Vitest).
+- **Server / async state:** TanStack Query (`QueryClient` at the root); stable, predictable `queryKey` values (see ADR-006).
+- Do **not** put the PoB engine, heavy parsers, or mod/tree rules **inside** components — call use cases / hooks that delegate to `packages/application` or `packages/domain`.
+- When touching **Rspack** (`rspack.config.js`) or **Vitest** (`vite.config.mts`), keep the `@` alias consistent in both.

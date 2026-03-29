@@ -13,14 +13,12 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getAllByText } = render(
+  it('should show the app title', () => {
+    const { getByRole } = render(
       <BrowserRouter>
         <App />
       </BrowserRouter>,
     );
-    expect(
-      getAllByText(new RegExp('Welcome @pob-web-tmp/web', 'gi')).length > 0,
-    ).toBeTruthy();
+    expect(getByRole('heading', { name: /PoB TypeScript Web/i })).toBeTruthy();
   });
 });

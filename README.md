@@ -32,6 +32,13 @@ Monorepo **Nx** com app **React 19** (`apps/web`), pacotes em `packages/*`, test
 
 Fronteiras de módulo: **ESLint** `@nx/enforce-module-boundaries` com tags `scope:*` (ver ADR-001).
 
+## Publicar no GitHub (primeiro remoto e PR)
+
+1. Instala e autentica o [GitHub CLI](https://cli.github.com/): `gh auth login`.
+2. Na raiz do repositório: `.\scripts\publish-pr-fase0.ps1` (repositório público por omissão) ou `.\scripts\publish-pr-fase0.ps1 -Private`.
+
+Isto cria o repositório (se não existir `origin`), envia `main` e a branch `feat/fase-0-fundacao`, e abre o PR para `main` com o corpo em [`.github/PULL_REQUEST_BODY_FASE0.md`](./.github/PULL_REQUEST_BODY_FASE0.md).
+
 ## Documentação
 
 - [CONTRIBUTING.md](./CONTRIBUTING.md) — branches, PRs, hooks
